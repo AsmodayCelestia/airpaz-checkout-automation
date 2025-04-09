@@ -3,6 +3,7 @@ Feature: Checkout process on Saucedemo
   User wants to complete a purchase
   So that the user can successfully order items from the site
 
+  # Note: Background steps apply to Scenario 1 - 3 only.
   Background:
     Given User is logged in to the Saucedemo site with valid credentials
     And User has added items to the shopping cart

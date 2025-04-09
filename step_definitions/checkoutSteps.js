@@ -12,18 +12,20 @@ AfterAll(async () => {
 });
 
 Given('User is logged in to the Saucedemo site with valid credentials', async () => {
-  await driver.get('https://www.saucedemo.com/');
-
-  const usernameInput = await driver.findElement(By.id('user-name'));
-  const passwordInput = await driver.findElement(By.id('password'));
-  const loginButton = await driver.findElement(By.id('login-button'));
-
-  await usernameInput.sendKeys('standard_user');
-  await passwordInput.sendKeys('secret_sauce');
-  await loginButton.click();
-
-  await driver.wait(until.urlContains('inventory'), 5000);
-});
+    await driver.get('https://www.saucedemo.com/');
+    await driver.wait(until.elementLocated(By.id('user-name')), 5000);
+  
+    const usernameInput = await driver.findElement(By.id('user-name'));
+    const passwordInput = await driver.findElement(By.id('password'));
+    const loginButton = await driver.findElement(By.id('login-button'));
+  
+    await usernameInput.sendKeys('standard_user');
+    await passwordInput.sendKeys('secret_sauce');
+    await loginButton.click();
+  
+    await driver.wait(until.urlContains('inventory'), 5000);
+  });
+  
 Given('User has added items to the shopping cart', async () => {
   const addToCartBtn = await driver.findElement(By.css('.inventory_item button'));
   await addToCartBtn.click();
